@@ -1,6 +1,6 @@
 let player;
 let acc = 0.5;
-
+let friction = 0.25;
 function setup(){
 	
 	let canvas = createCanvas(600, 600);
@@ -12,11 +12,12 @@ function setup(){
 
 function draw(){
 	background(220);
-	checkMovement();
+	checkForMovement();
+	slowDown();
 	player.drawPlayer()
 }
 
-function checkMovement(){
+function checkForMovement(){
 	if(keyIsDown(87)){ //keycode for w
 		if(player.y_vel > -10){
 			player.y_vel -= acc;
@@ -36,5 +37,22 @@ function checkMovement(){
 		if(player.x_vel < 10){
 			player.x_vel += acc;
 		}
+	}
+}
+
+function slowDown(){
+
+	if(player.x_vel > 0){
+		player.x_vel -= friction;
+	}
+	else if(player.x_vel < 0){
+		player.x_vel += friction;
+	}
+
+	if(player.y_vel > 0){
+		player.y_vel -= friction;
+	}
+	else if (player.y_vel < 0){
+		player.y_vel += friction;
 	}
 }
