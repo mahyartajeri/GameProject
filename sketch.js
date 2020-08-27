@@ -11,7 +11,7 @@ function setup(){
 
 function draw(){
 	background(220);
-	camera.zoom = 0.5;
+	//camera.zoom = 0.5;
 	rect(100, 100, 50, 50);
 	checkForMovement();
 	slowDown();
