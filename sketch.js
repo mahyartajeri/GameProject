@@ -15,10 +15,24 @@ function draw(){
 	rect(100, 100, 50, 50);
 	checkForMovement();
 	slowDown();
-	player.drawPlayer()
+	player.drawPlayer();
+	drawBullets();
+	triangle(player.x, player.y , mouseX, mouseY, 50 , 50);
 	camera.position.x = player.x;
 	camera.position.y = player.y;
 
+	console.log(mouseX , mouseY);
+
+}
+
+function drawBullets(){
+
+	for(let i = 0 ; i < player.bullets.length ; i++){
+		
+		 player.bullets[i].update();
+
+
+	}
 }
 
 function checkForMovement(){
@@ -58,5 +72,14 @@ function slowDown(){
 	}
 	else if (player.y_vel < 0){
 		player.y_vel += friction;
+	}
+}
+
+
+
+function keyPressed(){
+
+	if(keyCode === 32){
+		player.shoot();
 	}
 }
