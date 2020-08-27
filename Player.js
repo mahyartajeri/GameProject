@@ -8,6 +8,9 @@ class Player{
 		this.size = 30;
 		this.x_vel = 0;
 		this.y_vel = 0;
+
+		this.bullets = [];
+
 	}	
 
 	drawPlayer(){
@@ -20,6 +23,22 @@ class Player{
 			ellipse(this.x, this.y, this.size, this.size);
 			pop();
 		}
+	}
+
+	shoot(){
+
+		let x_mouse = mouseX;
+		let y_mouse = mouseY;
+
+		let calculatedAngle = asin((y_mouse - player.y) / dist(player.x , player.y , x_mouse , y_mouse) );
+
+		let startVector = createVector(player.x , player.y);
+		let endVector = createVector(x_mouse , y_mouse);
+		this.bullets.push(new Bullet(player.x , player.y , calculatedAngle , 0 , 10 ));
+
+		console.log(startVector.angleBetween(endVector)*180/PI);
+		console.log("ploopy");
+
 	}
 
 
