@@ -27,10 +27,17 @@ class Player{
 
 	shoot(){
 
-		let x_mouse = mouseX;
-		let y_mouse = mouseY;
+		let x_mouse = camera.mouseX;
+		let y_mouse = camera.mouseY;
 
-		let calculatedAngle = asin((y_mouse - player.y) / dist(player.x , player.y , x_mouse , y_mouse) );
+		let behta = y_mouse - player.y;
+
+		if(y_mouse < player.y){
+
+			behta = player.y - y_mouse;
+		}
+
+		let calculatedAngle = asin((behta) / dist(player.x , player.y , x_mouse , y_mouse) );
 
 		let startVector = createVector(player.x , player.y);
 		let endVector = createVector(x_mouse , y_mouse);
