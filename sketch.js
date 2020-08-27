@@ -17,11 +17,11 @@ function draw(){
 	slowDown();
 	player.drawPlayer();
 	drawBullets();
-	triangle(player.x, player.y , mouseX, mouseY, 50 , 50);
+	//triangle(player.x, player.y , camera.mouseX, camera.mouseY, camera.mouseX - player.x , camera.mouseY - player.y);
 	camera.position.x = player.x;
 	camera.position.y = player.y;
 
-	console.log(mouseX , mouseY);
+	console.log(camera.mouseX , camera.mouseY);
 
 }
 
