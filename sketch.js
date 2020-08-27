@@ -1,6 +1,7 @@
 let player;
 let acc = 0.5; //acceleration 
 let friction = 0.25; 
+let t_vel = acc*20; //maximum/terminal velocity
 
 function setup(){
 	let canvas = createCanvas(600, 600);
@@ -10,7 +11,7 @@ function setup(){
 
 function draw(){
 	background(220);
-	//camera.zoom = 0.5;
+	camera.zoom = 0.5;
 	rect(100, 100, 50, 50);
 	checkForMovement();
 	slowDown();
@@ -22,22 +23,22 @@ function draw(){
 
 function checkForMovement(){
 	if(keyIsDown(87)){ //keycode for w
-		if(player.y_vel > -10){
+		if(player.y_vel > -t_vel){
 			player.y_vel -= acc;
 		}
 	}
 	if(keyIsDown(83)){ //keycode for s
-		if(player.y_vel < 10){
+		if(player.y_vel < t_vel){
 			player.y_vel += acc;
 		}
 	}
 	if(keyIsDown(65)){ // keycode for a
-		if(player.x_vel > -10){
+		if(player.x_vel > -t_vel){
 			player.x_vel -= acc;
 		}
 	}
 	if(keyIsDown(68)){ //keycode for d
-		if(player.x_vel < 10){
+		if(player.x_vel < t_vel){
 			player.x_vel += acc;
 		}
 	}
